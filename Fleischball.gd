@@ -4,6 +4,7 @@ extends Node2D
 var dx = 0
 var dy = 30
 var spriteSize
+signal enemy_hit
 
 func _ready():
 	spriteSize = get_node("Sprite").texture.get_size().y
@@ -14,3 +15,6 @@ func _process(delta):
 	
 	if position.y > get_viewport().size.y + spriteSize:
 		queue_free()
+
+func _on_Fleischball_area_entered(area):
+	queue_free()
