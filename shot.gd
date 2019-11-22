@@ -11,3 +11,6 @@ func _ready():
 func _process(delta):
 	position.x += dx * delta
 	position.y += dy * delta
+
+	if position.y < 0:
+		queue_free()
