@@ -32,6 +32,9 @@ func _process(delta):
 		position.y += speed * delta
 	position.x = clamp(position.x, 0 + (sizeX / 2), screenWidth - (sizeX / 2))
 	position.y = clamp(position.y, 0 + (sizeY / 2), screenHeight - (sizeY / 2))
+	
+	if Input.is_action_just_pressed("player_shoot"):
+		pass
 
 
 
