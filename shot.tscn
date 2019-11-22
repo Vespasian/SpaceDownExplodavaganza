@@ -2,6 +2,7 @@
 
 [ext_resource path="res://shot.gd" type="Script" id=1]
 [ext_resource path="res://sprites/shot1.png" type="Texture" id=2]
+[ext_resource path="res://sounds/laser.wav" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fly"
@@ -40,3 +41,7 @@ anims/fly = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="shot"]
 shape = SubResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
