@@ -13,8 +13,10 @@ func _ready():
 	screenWidth = get_viewport().size.x
 	position.x = screenWidth / 2
 	position.y = screenHeight - 75
-	sizeX = get_node("Sprite").texture.get_size().x
-	sizeY = get_node("Sprite").texture.get_size().y
+	var sprite = get_node("Sprite")
+	var spriteScale = sprite.scale
+	sizeX = sprite.texture.get_size().x * spriteScale.x
+	sizeY = sprite.texture.get_size().y * spriteScale.y
 	
 
 func _process(delta):
@@ -26,8 +28,8 @@ func _process(delta):
 		position.y -= speed * delta
 	if Input.is_action_pressed("ui_down"):
 		position.y += speed * delta
-	position.x = clamp(position.x, 0 + sizeX, screenWidth - sizeX)
-	position.y = clamp(position.y, 0 + sizeY, screenHeight - sizeY)
+	position.x = clamp(position.x, 0 + (sizeX / 2), screenWidth - (sizeX / 2))
+	position.y = clamp(position.y, 0 + (sizeY / 2), screenHeight - (sizeY / 2))
 
 
 
