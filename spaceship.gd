@@ -30,10 +30,11 @@ func _process(delta):
 		position.y -= speed * delta
 	if Input.is_action_pressed("ui_down"):
 		position.y += speed * delta
+		emit_signal("hit")
 	position.x = clamp(position.x, 0 + (sizeX / 2), screenWidth - (sizeX / 2))
 	position.y = clamp(position.y, 0 + (sizeY / 2), screenHeight - (sizeY / 2))
 
 
-
-
-
+func _on_Spaceship_area_entered(area):
+	emit_signal("hit")
+	
