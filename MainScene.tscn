@@ -42,6 +42,7 @@ script = ExtResource( 5 )
 
 [node name="background-back" type="Sprite" parent="Background"]
 position = Vector2( 394.671, 666.022 )
+scale = Vector2( 4, 4 )
 z_index = -3
 texture = ExtResource( 6 )
 centered = false
