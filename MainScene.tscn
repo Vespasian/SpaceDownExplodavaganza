@@ -18,10 +18,8 @@ texture = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 23.6432, -49.2402 )
-scale = Vector2( 2, 2 )
+position = Vector2( -16.5855, 159.884 )
 texture = ExtResource( 3 )
-hframes = 2
 
 [node name="Spaceship" type="Area2D" parent="."]
 script = ExtResource( 4 )
