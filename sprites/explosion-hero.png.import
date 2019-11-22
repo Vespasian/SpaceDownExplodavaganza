@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fleischball.png-d84f1a5c9a532c5339d7b5af4ccaec33.stex"
+path="res://.import/explosion-hero.png-7e941c445fbd73009cb70c88ec1d2c49.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://fleischball.png"
-dest_files=[ "res://.import/fleischball.png-d84f1a5c9a532c5339d7b5af4ccaec33.stex" ]
+source_file="res://sprites/explosion-hero.png"
+dest_files=[ "res://.import/explosion-hero.png-7e941c445fbd73009cb70c88ec1d2c49.stex" ]
 
 [params]
 
