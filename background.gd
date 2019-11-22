@@ -1,7 +1,7 @@
 extends Node2D
 
 #90 max
-var scrollSpeed = 40
+var scrollSpeed = 50
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -25,7 +25,7 @@ func _ready():
 	tileHeight = tile.texture.get_height() * tile.scale.y
 	
 	var y = -tileHeight*2
-	while (y < screenHeight + tileHeight*2):
+	while (y < screenHeight - tileHeight):
 		addTileRow(y, tile)
 		y += tileHeight
 	#addTileRow(-tileHeight*2, tile)
@@ -42,7 +42,7 @@ func _process(delta):
 	if ( moveTiles < 1):
 		return
 	
-	var diff = ceil(moveTiles)
+	var diff = floor(moveTiles)
 	moveTiles = 0
 	
 	for tile in tiles:
