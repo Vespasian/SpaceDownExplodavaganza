@@ -1,6 +1,7 @@
 extends Node2D
 
-var scrollSpeed = 10
+#90 max
+var scrollSpeed = 90
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -27,12 +28,12 @@ func _ready():
 	#while (y < screenHeight):
 	#	addTileRow(y, tile)
 	#	y += tileHeight
+	addTileRow(-tileHeight*2, tile)
+	addTileRow(-tileHeight, tile)
 	addTileRow(0, tile)
 	addTileRow(tileHeight, tile)
 	addTileRow(tileHeight*2, tile)
 	addTileRow(tileHeight*3, tile)
-	addTileRow(tileHeight*4, tile)
-	
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -47,7 +48,7 @@ func _process(delta):
 	for tile in tiles:
 		tile.position.y += diff
 		if ( tile.position.y > screenHeight):
-			tile.position.y =  0
+			tile.position.y = -2*tileHeight+ (int(screenHeight) % int(tileHeight))
 	pass
 	
 func addTileRow(y, tile):

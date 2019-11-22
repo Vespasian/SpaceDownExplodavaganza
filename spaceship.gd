@@ -1,17 +1,26 @@
-extends Sprite
+extends Area2D
 
 # Movement speed
+# Signal, was ausgesendet wird, wenn man getroffen wird
+signal hit
 var speed = 250
+var screenWidth
+var screenHeight
+var sizeX
+var sizeY
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var screenWidth = get_viewport().size.x
-	var screenHeight = get_viewport().size.y
+	screenHeight = get_viewport().size.y
+	screenWidth = get_viewport().size.x
 	position.x = screenWidth / 2
 	position.y = screenHeight - 75
-	pass # Replace with function body.
+	var sprite = get_node("Sprite")
+	var spriteScale = sprite.scale
+	sizeX = sprite.texture.get_size().x * spriteScale.x
+	sizeY = sprite.texture.get_size().y * spriteScale.y
+	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_pressed("ui_left"):
 		position.x -= speed * delta
@@ -21,3 +30,13 @@ func _process(delta):
 		position.y -= speed * delta
 	if Input.is_action_pressed("ui_down"):
 		position.y += speed * delta
+	position.x = clamp(position.x, 0 + (sizeX / 2), screenWidth - (sizeX / 2))
+	position.y = clamp(position.y, 0 + (sizeY / 2), screenHeight - (sizeY / 2))
+	
+	if Input.is_action_just_pressed("player_shoot"):
+		pass
+
+
+
+
+
