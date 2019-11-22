@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/enemy-lvl2.png-3fe187beaa69ce92e3c5bfc642f66929.stex"
+path="res://.import/background2-back.png-5c4baf98b2d2726d0c3d962f7a279036.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/enemy-lvl2.png"
-dest_files=[ "res://.import/enemy-lvl2.png-3fe187beaa69ce92e3c5bfc642f66929.stex" ]
+source_file="res://sprites/background2-back.png"
+dest_files=[ "res://.import/background2-back.png-5c4baf98b2d2726d0c3d962f7a279036.stex" ]
 
 [params]
 
