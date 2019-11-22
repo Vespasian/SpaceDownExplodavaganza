@@ -1,4 +1,4 @@
-extends Sprite
+extends Area2D
 
 # Movement speed
 var speed = 250
@@ -13,8 +13,8 @@ func _ready():
 	screenWidth = get_viewport().size.x
 	position.x = screenWidth / 2
 	position.y = screenHeight - 75
-	sizeX = texture.get_size().x
-	sizeY = texture.get_size().y
+	sizeX = get_node("Sprite").texture.get_size().x
+	sizeY = get_node("Sprite").texture.get_size().y
 	
 
 func _process(delta):
