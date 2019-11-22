@@ -48,7 +48,7 @@ func _process(delta):
 	for tile in tiles:
 		tile.position.y += diff
 		if ( tile.position.y > screenHeight):
-			tile.position.y = -2*tileHeight+ (int(screenHeight) % int(tileHeight))
+			tile.position.y = -2*tileHeight+ (int(screenHeight) % int(tileHeight) + tile.position.y - screenHeight)
 	pass
 	
 func addTileRow(y, tile):
