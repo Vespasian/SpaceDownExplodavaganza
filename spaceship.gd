@@ -3,7 +3,7 @@ extends Area2D
 # Movement speed
 # Signal, was ausgesendet wird, wenn man getroffen wird
 signal hit
-var speed = 250
+var speed = 500
 var screenWidth
 var screenHeight
 var sizeX

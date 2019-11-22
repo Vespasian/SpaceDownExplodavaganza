@@ -1,7 +1,7 @@
 extends Node2D
 
 #90 max
-var scrollSpeed = 30
+var scrollSpeed = 50
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
