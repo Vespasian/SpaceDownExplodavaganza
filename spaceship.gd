@@ -8,6 +8,7 @@ var screenWidth
 var screenHeight
 var sizeX
 var sizeY
+var shotScene = preload("res://shot.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,9 +35,7 @@ func _process(delta):
 	position.y = clamp(position.y, 0 + (sizeY / 2), screenHeight - (sizeY / 2))
 	
 	if Input.is_action_just_pressed("player_shoot"):
-		pass
-
-
-
-
-
+		var shot = shotScene.instance()
+		shot.position.x = position.x
+		shot.position.y = position.y - (sizeY / 2)
+		get_parent().add_child(shot)
