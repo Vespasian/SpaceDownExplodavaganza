@@ -2,11 +2,11 @@
 
 [ext_resource path="res://enemy_spawn.gd" type="Script" id=1]
 [ext_resource path="res://sprites/background-black.png" type="Texture" id=2]
-[ext_resource path="res://Background.gd" type="Script" id=3]
+[ext_resource path="res://background.gd" type="Script" id=3]
 [ext_resource path="res://sprites/background-back.png" type="Texture" id=4]
-[ext_resource path="res://Background_front.gd" type="Script" id=5]
+[ext_resource path="res://background_front.gd" type="Script" id=5]
 [ext_resource path="res://sprites/background-front.png" type="Texture" id=6]
-[ext_resource path="res://Spaceship.tscn" type="PackedScene" id=7]
+[ext_resource path="res://spaceship.tscn" type="PackedScene" id=7]
 
 [node name="Node2D" type="Node2D"]
 
@@ -20,25 +20,25 @@ scale = Vector2( 66.5677, 34.4692 )
 z_index = -13
 texture = ExtResource( 2 )
 
-[node name="Background" type="Node2D" parent="."]
+[node name="background" type="Node2D" parent="."]
 script = ExtResource( 3 )
 
-[node name="background-back" type="Sprite" parent="Background"]
+[node name="background-back" type="Sprite" parent="background"]
 position = Vector2( 394.671, 666.022 )
 scale = Vector2( 4, 4 )
 z_index = -3
 texture = ExtResource( 4 )
 centered = false
 
-[node name="Background2" type="Node2D" parent="."]
+[node name="background2" type="Node2D" parent="."]
 script = ExtResource( 5 )
 
-[node name="background-front" type="Sprite" parent="Background2"]
+[node name="background-front" type="Sprite" parent="background2"]
 position = Vector2( -332.002, 171.468 )
 scale = Vector2( 3, 3 )
 z_index = -2
 texture = ExtResource( 6 )
 centered = false
 
-[node name="Spaceship" parent="." instance=ExtResource( 7 )]
+[node name="spaceship" parent="." instance=ExtResource( 7 )]
 [connection signal="timeout" from="enemy_spawn" to="enemy_spawn" method="_on_enemy_spawn_timeout"]
