@@ -2,16 +2,21 @@ extends Sprite
 
 # Movement speed
 var speed = 250
+var screenWidth
+var screenHeight
+var sizeX
+var sizeY
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var screenWidth = get_viewport().size.x
-	var screenHeight = get_viewport().size.y
+	screenHeight = get_viewport().size.y
+	screenWidth = get_viewport().size.x
 	position.x = screenWidth / 2
 	position.y = screenHeight - 75
-	pass # Replace with function body.
+	sizeX = texture.get_size().x
+	sizeY = texture.get_size().y
+	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_pressed("ui_left"):
 		position.x -= speed * delta
@@ -21,3 +26,10 @@ func _process(delta):
 		position.y -= speed * delta
 	if Input.is_action_pressed("ui_down"):
 		position.y += speed * delta
+	position.x = clamp(position.x, 0 + sizeX, screenWidth - sizeX)
+	position.y = clamp(position.y, 0 + sizeY, screenHeight - sizeY)
+
+
+
+
+
