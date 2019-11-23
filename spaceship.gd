@@ -40,6 +40,7 @@ func _process(delta):
 func _on_spaceship_area_entered(area):
 	if not "laser" in area.get_name():
 		emit_signal("hit")
+		area.queue_free()
 
 func _on_health_dead():
 	dead = true
