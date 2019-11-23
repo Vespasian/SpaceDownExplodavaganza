@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://enemy_spawn.gd" type="Script" id=1]
 [ext_resource path="res://sprites/background-black.png" type="Texture" id=2]
@@ -7,7 +7,7 @@
 [ext_resource path="res://background_front.gd" type="Script" id=5]
 [ext_resource path="res://sprites/background-front.png" type="Texture" id=6]
 [ext_resource path="res://spaceship.tscn" type="PackedScene" id=7]
-[ext_resource path="res://health.tscn" type="PackedScene" id=8]
+[ext_resource path="res://health2.tscn" type="PackedScene" id=8]
 [ext_resource path="res://sprites/health-full.png" type="Texture" id=9]
 [ext_resource path="res://level_upper.gd" type="Script" id=10]
 [ext_resource path="res://sounds/levelUp.wav" type="AudioStream" id=11]
@@ -15,6 +15,8 @@
 [ext_resource path="res://sounds/levelUp3.wav" type="AudioStream" id=13]
 [ext_resource path="res://sounds/levelUp4.wav" type="AudioStream" id=14]
 [ext_resource path="res://score.tscn" type="PackedScene" id=15]
+[ext_resource path="res://spaceship2.tscn" type="PackedScene" id=16]
+[ext_resource path="res://health.tscn" type="PackedScene" id=17]
 
 [node name="Node2D" type="Node2D"]
 
@@ -52,34 +54,33 @@ centered = false
 
 [node name="spaceship" parent="." instance=ExtResource( 7 )]
 
-[node name="health" parent="." instance=ExtResource( 8 )]
-editor/display_folded = true
+[node name="health2" parent="." instance=ExtResource( 8 )]
 
-[node name="h1" type="Sprite" parent="health"]
+[node name="h1" type="Sprite" parent="health2"]
 position = Vector2( 40, 40 )
 scale = Vector2( 2, 2 )
 z_index = 10
 texture = ExtResource( 9 )
 
-[node name="h2" type="Sprite" parent="health"]
+[node name="h2" type="Sprite" parent="health2"]
 position = Vector2( 70, 40 )
 scale = Vector2( 2, 2 )
 z_index = 10
 texture = ExtResource( 9 )
 
-[node name="h3" type="Sprite" parent="health"]
+[node name="h3" type="Sprite" parent="health2"]
 position = Vector2( 100, 40 )
 scale = Vector2( 2, 2 )
 z_index = 10
 texture = ExtResource( 9 )
 
-[node name="h4" type="Sprite" parent="health"]
+[node name="h4" type="Sprite" parent="health2"]
 position = Vector2( 130, 40 )
 scale = Vector2( 2, 2 )
 z_index = 10
 texture = ExtResource( 9 )
 
-[node name="h5" type="Sprite" parent="health"]
+[node name="h5" type="Sprite" parent="health2"]
 position = Vector2( 160, 40 )
 scale = Vector2( 2, 2 )
 z_index = 10
@@ -104,10 +105,47 @@ stream = ExtResource( 13 )
 stream = ExtResource( 14 )
 
 [node name="score" parent="." instance=ExtResource( 15 )]
-position = Vector2( 940, 40 )
+position = Vector2( 500, 40 )
+
+[node name="spaceship2" parent="." instance=ExtResource( 16 )]
+
+[node name="health" parent="." instance=ExtResource( 17 )]
+
+[node name="h1" type="Sprite" parent="health"]
+position = Vector2( 856, 40 )
+scale = Vector2( 2, 2 )
+z_index = 10
+texture = ExtResource( 9 )
+
+[node name="h2" type="Sprite" parent="health"]
+position = Vector2( 888, 40 )
+scale = Vector2( 2, 2 )
+z_index = 10
+texture = ExtResource( 9 )
+
+[node name="h3" type="Sprite" parent="health"]
+position = Vector2( 920, 40 )
+scale = Vector2( 2, 2 )
+z_index = 10
+texture = ExtResource( 9 )
+
+[node name="h4" type="Sprite" parent="health"]
+position = Vector2( 952, 40 )
+scale = Vector2( 2, 2 )
+z_index = 10
+texture = ExtResource( 9 )
+
+[node name="h5" type="Sprite" parent="health"]
+position = Vector2( 984, 40 )
+scale = Vector2( 2, 2 )
+z_index = 10
+texture = ExtResource( 9 )
 [connection signal="timeout" from="enemy_spawn" to="enemy_spawn" method="_on_enemy_spawn_timeout"]
 [connection signal="area_entered" from="spaceship" to="spaceship" method="_on_spaceship_area_entered"]
 [connection signal="hit" from="spaceship" to="health" method="_on_spaceship_hit"]
-[connection signal="dead" from="health" to="spaceship" method="_on_health_dead"]
+[connection signal="dead2" from="health2" to="spaceship2" method="_on_health2_dead2"]
 [connection signal="level_up" from="level_upper" to="enemy_spawn" method="_on_level_upper_level_up"]
 [connection signal="timeout" from="level_upper" to="level_upper" method="_on_level_upper_timeout"]
+[connection signal="area_entered" from="spaceship2" to="spaceship2" method="_on_spaceship2_area_entered"]
+[connection signal="player2_hit" from="spaceship2" to="health2" method="_on_spaceship2_player2_hit"]
+[connection signal="dead" from="health" to="spaceship" method="_on_health_dead"]
