@@ -39,3 +39,7 @@ func _process(delta):
 		shot.position.x = position.x
 		shot.position.y = position.y - (sizeY / 2)
 		get_parent().add_child(shot)
+
+
+func _on_spaceship_area_entered(area):
+	emit_signal("hit")
