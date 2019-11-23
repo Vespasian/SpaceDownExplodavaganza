@@ -48,6 +48,8 @@ func _on_spaceship_area_entered(area):
 	if "powerup" in area.get_name():
 		emit_signal("powerup")
 		area.queue_free()
+		return
+
 	if not "laser" in area.get_name():
 		emit_signal("hit")
 		area.queue_free()
