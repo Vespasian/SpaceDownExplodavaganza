@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="SpaceDownBalls"
+config/name="Attack of the Fleischball Clones"
 run/main_scene="res://game_over.tscn"
 config/icon="res://icon.png"
 

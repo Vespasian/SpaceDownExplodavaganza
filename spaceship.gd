@@ -19,16 +19,22 @@ func _ready():
 	spriteSize = sprite.get_rect().size * sprite.scale
 
 func _process(delta):
+	var sprite = get_node("Sprite")
 	if dead:
 		return
+	sprite.frame = 0
 	if Input.is_action_pressed("ui_left"):
 		position.x -= speed * delta
+		sprite.frame = 1
 	if Input.is_action_pressed("ui_right"):
 		position.x += speed * delta
+		sprite.frame = 1
 	if Input.is_action_pressed("ui_up"):
 		position.y -= speed * delta
+		sprite.frame = 1
 	if Input.is_action_pressed("ui_down"):
 		position.y += speed * delta
+		sprite.frame = 1
 	position.x = clamp(position.x, spriteSize.x / 2, viewportSize.x - (spriteSize.x / 2))
 	position.y = clamp(position.y, spriteSize.y / 2, viewportSize.y - (spriteSize.y / 2))
 	
@@ -42,6 +48,8 @@ func _on_spaceship_area_entered(area):
 	if "powerup" in area.get_name():
 		emit_signal("powerup")
 		area.queue_free()
+		return
+
 	if not "laser" in area.get_name():
 		emit_signal("hit")
 		area.queue_free()
