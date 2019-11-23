@@ -1,13 +1,30 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://fleischball.gd" type="Script" id=1]
 [ext_resource path="res://sprites/enemy-lvl1.png" type="Texture" id=2]
+[ext_resource path="res://sounds/splat.wav" type="AudioStream" id=3]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 32.7172
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 28.6794
+height = 18.224
 
 [sub_resource type="Animation" id=2]
-resource_name = "wobble"
+resource_name = "die"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 3, 4, 5 ]
+}
+
+[sub_resource type="Animation" id=3]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -29,16 +46,26 @@ script = ExtResource( 1 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 hframes = 6
+frame = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "wobble"
 playback_speed = 2.0
-anims/wobble = SubResource( 2 )
+anims/die = SubResource( 2 )
+anims/wobble = SubResource( 3 )
 
 [node name="spawn_shot" type="Timer" parent="."]
 autostart = true
+
+[node name="splat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -5.0
+pitch_scale = 0.75
 [connection signal="area_entered" from="." to="." method="_on_Fleischball_area_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="spawn_shot" to="." method="_on_spawn_shot_timeout"]
+[connection signal="finished" from="splat" to="." method="_on_splat_finished"]
