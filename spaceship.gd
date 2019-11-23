@@ -6,7 +6,7 @@ signal hit
 var speed = 500
 var viewportSize
 var spriteSize
-var shotScene = preload("res://shot.tscn")
+var shotScene = preload("res://laser.tscn")
 var dead = false
 
 # Called when the node enters the scene tree for the first time.
@@ -38,10 +38,14 @@ func _process(delta):
 		get_parent().add_child(shot)
 
 func _on_spaceship_area_entered(area):
-	if not area.get_name() == "shot":
+	if not "laser" in area.get_name():
 		emit_signal("hit")
-		print("hit")
+		area.queue_free()
 
 func _on_health_dead():
 	dead = true
-	# Explosions Frames anzeigen
+	get_node("AnimationPlayer").play("die")
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "die":
+		queue_free()
