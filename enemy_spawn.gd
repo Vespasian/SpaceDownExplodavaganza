@@ -21,6 +21,6 @@ func _on_enemy_spawn_timeout():
 func _on_level_upper_level_up(newLevel):
 	level = newLevel
 	spawn_timer *= 0.8
-	wait_time = min(0.1, spawn_timer)
+	wait_time = max(0.2, spawn_timer)
 	print(level)
 	pass # Replace with function body.
