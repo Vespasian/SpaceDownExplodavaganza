@@ -1,10 +1,5 @@
 extends Timer
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-var level = 1
-var spawn_timer = 30
 var powerupScene = preload("res://powerup.tscn")
 var screenWidth
 
