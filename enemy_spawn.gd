@@ -4,7 +4,7 @@ extends Timer
 # var a = 2
 # var b = "text"
 var level = 1
-var spawn_timer = 1.0
+var spawn_timer = 0.9
 var enemyScene = preload("res://fleischball.tscn")
 var screenWidth
 
