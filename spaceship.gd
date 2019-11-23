@@ -51,4 +51,9 @@ func _on_health_dead():
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "die":
+		var gameOverScene = load("res://game_over.tscn")
+		var gameOver = gameOverScene.instance()
+		var score = get_parent().get_node("score").score
+		gameOver.score = score
+		get_parent().add_child(gameOver)
 		queue_free()
