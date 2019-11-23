@@ -79,7 +79,7 @@ z_index = 10
 texture = ExtResource( 9 )
 
 [node name="level_upper" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 30.0
 autostart = true
 script = ExtResource( 10 )
 
