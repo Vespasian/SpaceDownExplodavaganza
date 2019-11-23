@@ -3,6 +3,7 @@ extends Area2D
 # Movement speed
 # Signal, was ausgesendet wird, wenn man getroffen wird
 signal hit
+signal powerup
 var speed = 500
 var viewportSize
 var spriteSize
@@ -38,6 +39,9 @@ func _process(delta):
 		get_parent().add_child(shot)
 
 func _on_spaceship_area_entered(area):
+	if "powerup" in area.get_name():
+		emit_signal("powerup")
+		area.queue_free()
 	if not "laser" in area.get_name():
 		emit_signal("hit")
 		area.queue_free()
