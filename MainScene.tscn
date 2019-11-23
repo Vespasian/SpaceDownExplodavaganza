@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://enemy_spawn.gd" type="Script" id=1]
 [ext_resource path="res://sprites/background-black.png" type="Texture" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://spaceship.tscn" type="PackedScene" id=7]
 [ext_resource path="res://health.tscn" type="PackedScene" id=8]
 [ext_resource path="res://sprites/health-full.png" type="Texture" id=9]
+[ext_resource path="res://level_upper.gd" type="Script" id=10]
+[ext_resource path="res://sounds/levelUp.wav" type="AudioStream" id=11]
 
 [node name="Node2D" type="Node2D"]
 
@@ -75,6 +77,16 @@ position = Vector2( 160, 40 )
 scale = Vector2( 2, 2 )
 z_index = 10
 texture = ExtResource( 9 )
+
+[node name="level_upper" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+script = ExtResource( 10 )
+
+[node name="sound" type="AudioStreamPlayer" parent="level_upper"]
+stream = ExtResource( 11 )
 [connection signal="timeout" from="enemy_spawn" to="enemy_spawn" method="_on_enemy_spawn_timeout"]
 [connection signal="area_entered" from="spaceship" to="spaceship" method="_on_spaceship_area_entered"]
 [connection signal="hit" from="spaceship" to="health" method="_on_spaceship_hit"]
+[connection signal="level_up" from="level_upper" to="enemy_spawn" method="_on_level_upper_level_up"]
+[connection signal="timeout" from="level_upper" to="level_upper" method="_on_level_upper_timeout"]
