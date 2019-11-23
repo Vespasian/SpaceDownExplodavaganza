@@ -13,7 +13,6 @@ var min_shot = 0.7
 var max_shot = 2
 
 var spriteSize
-signal enemy_hit
 var enemyShotScene = preload("res://enemy_shot.tscn")
 var timer
 
@@ -45,6 +44,7 @@ func _process(delta):
 
 func _on_Fleischball_area_entered(area):
 	if "laser" in area.get_name():
+		get_parent().get_node("score").emit_signal("enemy_hit")
 		area.queue_free()
 		get_node("AnimationPlayer").play("die")
 		dying = true
