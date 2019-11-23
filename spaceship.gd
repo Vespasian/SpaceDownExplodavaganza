@@ -44,7 +44,7 @@ func _on_spaceship_area_entered(area):
 
 func _on_health_dead():
 	if ( dead == true):
-		pass
+		return
 	dead = true
 	get_node("AnimationPlayer").play("die")
 	get_node("AudioStreamPlayer").play()
