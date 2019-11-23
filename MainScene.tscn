@@ -23,7 +23,7 @@ autostart = true
 script = ExtResource( 1 )
 
 [node name="background-black" type="Sprite" parent="."]
-position = Vector2( 888.467, 526.065 )
+position = Vector2( 889.299, 526.065 )
 scale = Vector2( 66.5677, 34.4692 )
 z_index = -13
 texture = ExtResource( 2 )
