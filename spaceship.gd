@@ -43,4 +43,8 @@ func _on_spaceship_area_entered(area):
 
 func _on_health_dead():
 	dead = true
-	# Explosions Frames anzeigen
+	get_node("AnimationPlayer").play("die")
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "die":
+		queue_free()
