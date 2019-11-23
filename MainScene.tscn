@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://enemy_spawn.gd" type="Script" id=1]
 [ext_resource path="res://sprites/background-black.png" type="Texture" id=2]
@@ -7,8 +7,6 @@
 [ext_resource path="res://background_front.gd" type="Script" id=5]
 [ext_resource path="res://sprites/background-front.png" type="Texture" id=6]
 [ext_resource path="res://spaceship.tscn" type="PackedScene" id=7]
-[ext_resource path="res://health.tscn" type="PackedScene" id=8]
-[ext_resource path="res://sprites/health-full.png" type="Texture" id=9]
 
 [node name="Node2D" type="Node2D"]
 
@@ -17,7 +15,7 @@ autostart = true
 script = ExtResource( 1 )
 
 [node name="background-black" type="Sprite" parent="."]
-position = Vector2( 889.299, 526.065 )
+position = Vector2( 888.467, 526.065 )
 scale = Vector2( 66.5677, 34.4692 )
 z_index = -13
 texture = ExtResource( 2 )
@@ -43,38 +41,4 @@ texture = ExtResource( 6 )
 centered = false
 
 [node name="spaceship" parent="." instance=ExtResource( 7 )]
-
-[node name="health" parent="." instance=ExtResource( 8 )]
-
-[node name="h1" type="Sprite" parent="health"]
-position = Vector2( 40, 40 )
-scale = Vector2( 2, 2 )
-z_index = 10
-texture = ExtResource( 9 )
-
-[node name="h2" type="Sprite" parent="health"]
-position = Vector2( 70, 40 )
-scale = Vector2( 2, 2 )
-z_index = 10
-texture = ExtResource( 9 )
-
-[node name="h3" type="Sprite" parent="health"]
-position = Vector2( 100, 40 )
-scale = Vector2( 2, 2 )
-z_index = 10
-texture = ExtResource( 9 )
-
-[node name="h4" type="Sprite" parent="health"]
-position = Vector2( 130, 40 )
-scale = Vector2( 2, 2 )
-z_index = 10
-texture = ExtResource( 9 )
-
-[node name="h5" type="Sprite" parent="health"]
-position = Vector2( 160, 40 )
-scale = Vector2( 2, 2 )
-z_index = 10
-texture = ExtResource( 9 )
 [connection signal="timeout" from="enemy_spawn" to="enemy_spawn" method="_on_enemy_spawn_timeout"]
-[connection signal="area_entered" from="spaceship" to="spaceship" method="_on_spaceship_area_entered"]
-[connection signal="hit" from="spaceship" to="health" method="_on_spaceship_hit"]
