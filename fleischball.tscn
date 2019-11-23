@@ -2,6 +2,7 @@
 
 [ext_resource path="res://fleischball.gd" type="Script" id=1]
 [ext_resource path="res://sprites/enemy-lvl1.png" type="Texture" id=2]
+[ext_resource path="res://sounds/splat.wav" type="AudioStream" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 28.6794
@@ -59,6 +60,10 @@ anims/wobble = SubResource( 3 )
 
 [node name="spawn_shot" type="Timer" parent="."]
 autostart = true
+
+[node name="splat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 [connection signal="area_entered" from="." to="." method="_on_Fleischball_area_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="spawn_shot" to="." method="_on_spawn_shot_timeout"]
+[connection signal="finished" from="splat" to="." method="_on_splat_finished"]

@@ -16,12 +16,14 @@ var spriteSize
 signal enemy_hit
 var enemyShotScene = preload("res://enemy_shot.tscn")
 var timer
+var splat
 
 func _ready():
 	var sprite = get_node("Sprite")
 	spriteSize = sprite.get_rect().size * sprite.scale
 	timer = get_node("spawn_shot")
 	timer.wait_time = rand_range(min_shot, max_shot)
+	splat = get_node("splat")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -46,6 +48,7 @@ func _process(delta):
 func _on_Fleischball_area_entered(area):
 	if "laser" in area.get_name():
 		area.queue_free()
+		splat.play()
 		get_node("AnimationPlayer").play("die")
 		dying = true
 
