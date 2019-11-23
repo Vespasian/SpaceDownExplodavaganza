@@ -1,7 +1,7 @@
 extends Area2D
 
 var dx = 0
-var dy = 500
+var dy = 400
 var screenHeight
 
 func _ready():
