@@ -45,6 +45,9 @@ func _process(delta):
 
 
 func _on_Fleischball_area_entered(area):
+	if dying:
+		return
+
 	if "laser" in area.get_name():
 		get_parent().get_node("score").emit_signal("enemy_hit")
 		area.queue_free()
