@@ -6,6 +6,7 @@ var dy = 30
 var move_jitter = 5
 var max_speed = 300
 var bounce_factor = -0.8
+var dying = false
 
 var jitter = 0.2
 var min_shot = 0.7
@@ -26,7 +27,9 @@ func _ready():
 func _process(delta):
 	position.x += dx * delta
 	position.y += dy * delta
-	dx = clamp(dx + rand_range(-move_jitter, move_jitter), -max_speed, max_speed)
+
+	if !dying:
+		dx = clamp(dx + rand_range(-move_jitter, move_jitter), -max_speed, max_speed)
 	
 	var viewportSize = get_viewport().size
 	if position.x < spriteSize.x / 2:
@@ -42,8 +45,9 @@ func _process(delta):
 
 func _on_Fleischball_area_entered(area):
 	if "laser" in area.get_name():
-		queue_free()
 		area.queue_free()
+		get_node("AnimationPlayer").play("die")
+		dying = true
 
 
 func _on_spawn_shot_timeout():
@@ -53,3 +57,7 @@ func _on_spawn_shot_timeout():
 	get_parent().add_child(shot)
 	
 	timer.wait_time = clamp(timer.wait_time + rand_range(-jitter,jitter), min_shot, max_shot)
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "die":
+		queue_free()
