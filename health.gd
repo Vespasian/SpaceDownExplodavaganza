@@ -1,11 +1,16 @@
 extends Node2D
 
 var health
+signal dead
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	health = 5
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	print(health)
+
+
+func _on_spaceship_hit():
+	health = health - 1
+	if health == 0:
+		emit_signal("dead")

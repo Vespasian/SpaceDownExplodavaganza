@@ -42,4 +42,4 @@ func _process(delta):
 
 
 func _on_spaceship_area_entered(area):
-	print(area.get_name())
+	emit_signal("hit")
