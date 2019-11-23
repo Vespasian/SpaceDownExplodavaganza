@@ -3,7 +3,7 @@
 [ext_resource path="res://fleischball.gd" type="Script" id=1]
 [ext_resource path="res://sprites/enemy-lvl1.png" type="Texture" id=2]
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 28.6794
 height = 18.224
 
@@ -33,7 +33,7 @@ hframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "wobble"

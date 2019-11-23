@@ -8,7 +8,7 @@ var max_speed = 300
 var bounce_factor = -0.8
 
 var jitter = 0.2
-var min_shot = 0.5
+var min_shot = 0.7
 var max_shot = 2
 
 var spriteSize
