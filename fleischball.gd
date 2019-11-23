@@ -17,4 +17,5 @@ func _process(delta):
 		queue_free()
 
 func _on_Fleischball_area_entered(area):
-	queue_free()
+	if area.get_name() == 'shot':
+		queue_free()
