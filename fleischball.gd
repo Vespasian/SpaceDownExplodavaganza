@@ -41,8 +41,9 @@ func _process(delta):
 
 
 func _on_Fleischball_area_entered(area):
-	if area.get_name() == 'shot':
+	if "shot" in area.get_name():
 		queue_free()
+		area.queue_free()
 
 
 func _on_spawn_shot_timeout():
