@@ -9,6 +9,7 @@ var screenHeight
 var sizeX
 var sizeY
 var shotScene = preload("res://shot.tscn")
+var dead = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,6 +24,8 @@ func _ready():
 	
 
 func _process(delta):
+	if dead:
+		return
 	if Input.is_action_pressed("ui_left"):
 		position.x -= speed * delta
 	if Input.is_action_pressed("ui_right"):
@@ -37,9 +40,16 @@ func _process(delta):
 	if Input.is_action_just_pressed("player_shoot"):
 		var shot = shotScene.instance()
 		shot.position.x = position.x
-		shot.position.y = position.y - (sizeY / 2)
+		shot.position.y = position.y - sizeY + 19
 		get_parent().add_child(shot)
 
 
 func _on_spaceship_area_entered(area):
-	emit_signal("hit")
+	if not area.get_name() == "shot":
+		emit_signal("hit")
+		print("hit")
+
+
+func _on_health_dead():
+	dead = true
+	# Explosions Frames anzeigen
