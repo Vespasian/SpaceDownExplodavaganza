@@ -22,5 +22,3 @@ func _on_level_upper_level_up(newLevel):
 	level = newLevel
 	spawn_timer *= 0.9
 	wait_time = max(0.2, spawn_timer)
-	print(level)
-	pass # Replace with function body.
