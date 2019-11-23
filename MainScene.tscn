@@ -90,11 +90,11 @@ texture = ExtResource( 9 )
 
 [node name="pain1" type="AudioStreamPlayer" parent="health"]
 stream = ExtResource( 10 )
-volume_db = -20.0
+volume_db = -10.0
 
 [node name="pain2" type="AudioStreamPlayer" parent="health"]
 stream = ExtResource( 11 )
-volume_db = -15.0
+volume_db = -10.0
 
 [node name="pain3" type="AudioStreamPlayer" parent="health"]
 stream = ExtResource( 12 )
@@ -102,6 +102,7 @@ volume_db = -10.0
 
 [node name="pain4" type="AudioStreamPlayer" parent="health"]
 stream = ExtResource( 13 )
+volume_db = -10.0
 
 [node name="level_upper" type="Timer" parent="."]
 editor/display_folded = true
