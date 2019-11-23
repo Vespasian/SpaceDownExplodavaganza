@@ -15,12 +15,14 @@ var spriteSize
 signal enemy_hit
 var enemyShotScene = preload("res://enemy_shot.tscn")
 var timer
+var splat
 
 func _ready():
 	var sprite = get_node("Sprite")
 	spriteSize = sprite.get_rect().size * sprite.scale
 	timer = get_node("spawn_shot")
 	timer.wait_time = rand_range(min_shot, max_shot)
+	splat = get_node("splat")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -42,7 +44,7 @@ func _process(delta):
 
 func _on_Fleischball_area_entered(area):
 	if "shot" in area.get_name():
-		queue_free()
+		splat.play()
 		area.queue_free()
 
 
@@ -53,3 +55,7 @@ func _on_spawn_shot_timeout():
 	get_parent().add_child(shot)
 	
 	timer.wait_time = clamp(timer.wait_time + rand_range(-jitter,jitter), min_shot, max_shot)
+
+
+func _on_splat_finished():
+		queue_free()
