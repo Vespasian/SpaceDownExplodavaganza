@@ -41,7 +41,7 @@ func _process(delta):
 
 
 func _on_Fleischball_area_entered(area):
-	if "shot" in area.get_name():
+	if "laser" in area.get_name():
 		queue_free()
 		area.queue_free()
 
