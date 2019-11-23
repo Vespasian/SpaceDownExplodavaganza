@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="SpaceDownBalls"
-run/main_scene="res://game_over.tscn"
+run/main_scene="res://MainScene.tscn"
 config/icon="res://icon.png"
 
 [display]
