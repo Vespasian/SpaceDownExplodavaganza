@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://enemy_spawn.gd" type="Script" id=1]
 [ext_resource path="res://sprites/background-black.png" type="Texture" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://sounds/levelUp3.wav" type="AudioStream" id=13]
 [ext_resource path="res://sounds/levelUp4.wav" type="AudioStream" id=14]
 [ext_resource path="res://score.tscn" type="PackedScene" id=15]
+[ext_resource path="res://musicplayer.gd" type="Script" id=16]
+[ext_resource path="res://sounds/music.ogg" type="AudioStream" id=17]
 
 [node name="Node2D" type="Node2D"]
 
@@ -105,6 +107,12 @@ stream = ExtResource( 14 )
 
 [node name="score" parent="." instance=ExtResource( 15 )]
 position = Vector2( 940, 40 )
+
+[node name="musicplayer" type="Node2D" parent="."]
+script = ExtResource( 16 )
+
+[node name="music" type="AudioStreamPlayer" parent="musicplayer"]
+stream = ExtResource( 17 )
 [connection signal="timeout" from="enemy_spawn" to="enemy_spawn" method="_on_enemy_spawn_timeout"]
 [connection signal="area_entered" from="spaceship" to="spaceship" method="_on_spaceship_area_entered"]
 [connection signal="hit" from="spaceship" to="health" method="_on_spaceship_hit"]
