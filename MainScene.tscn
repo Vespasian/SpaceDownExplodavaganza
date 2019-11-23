@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://enemy_spawn.gd" type="Script" id=1]
 [ext_resource path="res://sprites/background-black.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://background_front.gd" type="Script" id=5]
 [ext_resource path="res://sprites/background-front.png" type="Texture" id=6]
 [ext_resource path="res://spaceship.tscn" type="PackedScene" id=7]
+[ext_resource path="res://health.tscn" type="PackedScene" id=8]
 
 [node name="Node2D" type="Node2D"]
 
@@ -41,4 +42,7 @@ texture = ExtResource( 6 )
 centered = false
 
 [node name="spaceship" parent="." instance=ExtResource( 7 )]
+
+[node name="health" parent="." instance=ExtResource( 8 )]
 [connection signal="timeout" from="enemy_spawn" to="enemy_spawn" method="_on_enemy_spawn_timeout"]
+[connection signal="area_entered" from="spaceship" to="spaceship" method="_on_spaceship_area_entered"]
